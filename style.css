@@ -1,0 +1,181 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* ## Colors */
+  /* ### Primary */
+  --Orange: hsl(25, 97%, 53%);
+  /* ### Neutral */
+  --White: hsl(0, 0%, 100%);
+  --Light-Grey: hsl(217, 12%, 63%);
+  --Dark-Blue: hsl(213, 19%, 18%);
+  --Dark-Blue-light: hsl(213, 19%, 23%);
+  --Very-Dark-Blue: hsl(216, 12%, 8%);
+}
+
+body {
+  font-family: "Overpass" sans-serif;
+  background: var(--Very-Dark-Blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-style: normal;
+}
+
+/* ---- General styling for images to fit their parent container ---- */
+img {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- overlay ---- */
+.overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card-container {
+  padding: 1.5em;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-direction: column;
+  margin: 12% auto;
+  border-radius: 15px;
+  background-color: var(--Dark-Blue);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+}
+
+.rating {
+  padding: 10px;
+  background: var(--Dark-Blue-light);
+  width: 40px;
+  border-radius: 50%;
+}
+
+.main-heading {
+  color: var(--White);
+}
+
+.sub-heading {
+  color: var(--Light-Grey);
+}
+
+.numbers-container {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.number {
+  color: var(--Light-Grey);
+  border: none;
+  border-radius: 100%;
+  padding: 10px;
+  background-color: var(--Dark-Blue-light);
+  width: 40px;
+  height: 40px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn {
+  padding: 15px 0;
+  background: var(--Orange);
+  border: none;
+  border-radius: 32px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  font-weight: 700;
+}
+
+/* ---- Thank You state ---- */
+.modal {
+  padding: 1.5em;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 12% auto;
+  border-radius: 15px;
+  background: var(--Dark-Blue);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.close-modal {
+  position: absolute;
+  margin: -2.5% 0 0 21%;
+  border-radius: 50%;
+  font-size: 3rem;
+  color: var(--Orange);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 1rem;
+}
+
+.transaction-img {
+  width: 60%;
+}
+
+.selected-number {
+  border-radius: 32px;
+  background: var(--Dark-Blue-light);
+  padding: 7px 14px;
+  color: var(--Orange);
+}
+
+.main-text {
+  color: var(--White);
+  font-weight: 700;
+}
+
+.sub-text {
+  color: var(--Light-Grey);
+  font-weight: 400;
+}
+
+/* ---- attribution for footer ---- */
+.attribution {
+  font-size: 13px;
+  text-align: center;
+  color: var(--White);
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
+
+/* ---- Media Queries ---- */
+@media (max-width: 640px) {
+  .card-container {
+    margin: 50% auto;
+    width: 90%;
+  }
+
+  .modal {
+    margin: 50% auto;
+    width: 90%;
+  }
+}
