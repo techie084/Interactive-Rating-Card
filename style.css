@@ -16,10 +16,11 @@
   --Dark-Blue: hsl(213, 19%, 18%);
   --Dark-Blue-light: hsl(213, 19%, 23%);
   --Very-Dark-Blue: hsl(216, 12%, 8%);
+  --Red: hsl(0, 100%, 50%);
 }
 
 body {
-  font-family: "Overpass" sans-serif;
+  font-family: "Overpass", sans-serif;
   background: var(--Very-Dark-Blue);
   display: flex;
   align-items: center;
@@ -34,7 +35,7 @@ img {
   height: 100%;
 }
 
-/* ---- overlay ---- */
+/* ---- Overlay, Hidden, Active ---- */
 .overlay {
   position: absolute;
   inset: 0;
@@ -46,9 +47,20 @@ img {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
+.active {
+  color: var(--Very-Dark-Blue) !important;
+  background: var(--Orange) !important;
+}
+
+.active {
+  color: var(--Very-Dark-Blue);
+  background: var(--Orange);
+}
+
+/* ---- Card Container ---- */
 .card-container {
   padding: 1.5em;
   width: 25%;
@@ -63,10 +75,10 @@ img {
 }
 
 .rating {
-  padding: 10px;
+  padding: 12px;
   background: var(--Dark-Blue-light);
   width: 40px;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
 .main-heading {
@@ -87,12 +99,23 @@ img {
   color: var(--Light-Grey);
   border: none;
   border-radius: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: var(--Dark-Blue-light);
   width: 40px;
   height: 40px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.number:hover {
+  background-color: var(--White);
+  color: var(--Very-Dark-Blue);
+}
+
+.error-msg {
+  color: var(--Red);
+  font-size: 13px;
+  text-align: center;
 }
 
 .btn {
@@ -103,12 +126,18 @@ img {
   text-transform: uppercase;
   letter-spacing: 3px;
   cursor: pointer;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
   font-weight: 700;
+}
+
+.btn:hover {
+  background: var(--White);
+  color: var(--Very-Dark-Blue);
 }
 
 /* ---- Thank You state ---- */
 .modal {
+  position: absolute;
   padding: 1.5em;
   width: 25%;
   display: flex;
@@ -120,11 +149,12 @@ img {
   background: var(--Dark-Blue);
   box-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
   text-align: center;
+  z-index: 10;
 }
 
 .close-modal {
   position: absolute;
-  margin: -2.5% 0 0 21%;
+  margin: -10% 0 0 81%;
   border-radius: 50%;
   font-size: 3rem;
   color: var(--Orange);
@@ -141,7 +171,7 @@ img {
 .selected-number {
   border-radius: 32px;
   background: var(--Dark-Blue-light);
-  padding: 7px 14px;
+  padding: 10px 14px;
   color: var(--Orange);
 }
 
@@ -167,15 +197,15 @@ img {
   text-decoration: none;
 }
 
-/* ---- Media Queries ---- */
+/* ---- Media Queries for mobile ---- */
 @media (max-width: 640px) {
   .card-container {
-    margin: 50% auto;
+    margin: 40% auto;
     width: 90%;
   }
 
   .modal {
-    margin: 50% auto;
+    margin: 40% auto;
     width: 90%;
   }
 }
