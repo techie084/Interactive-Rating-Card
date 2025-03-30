@@ -1,4 +1,3 @@
-// Always use strict mode
 "use strict";
 ///////////////////////////////////////////////////////////////
 // Declaring Variables
@@ -14,20 +13,27 @@ let buttonText = "";
 // Style the Selected number
 numbersBtn.forEach((number) => {
     number.addEventListener("click", () => {
-        errorMsg?.classList.add("hidden");
+        numbersBtn.forEach((btn) => {
+            btn.classList.remove("active");
+        });
         number.classList.add("active");
+        if (errorMsg) {
+            errorMsg?.classList.add("hidden");
+        }
         buttonText = number.textContent;
     });
 });
 // Function for opening the Modal
 btnSubmit?.addEventListener("click", () => {
     if (buttonText) {
-        selected.textContent = buttonText;
+        if (selected) {
+            selected.textContent = buttonText;
+        }
         modal?.classList.remove("hidden");
         overlay?.classList.remove("hidden");
     }
     else {
-        errorMsg?.classList.remove("hidden");
+        errorMsg.classList.remove("hidden");
     }
 });
 // Function for Closing the modal

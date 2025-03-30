@@ -1,23 +1,31 @@
-// Always use strict mode
-"use strict";
-
 ///////////////////////////////////////////////////////////////
 // Declaring Variables
-const btnSubmit = document.querySelector(".btn");
-const modal = document.querySelector(".modal");
-const numbersBtn = document.querySelectorAll(".number");
-const overlay = document.querySelector(".overlay");
-const selected = document.querySelector(".selected");
-const btnCloseModal = document.querySelector(".close-modal");
+const btnSubmit = document.querySelector(".btn") as HTMLButtonElement;
+const modal = document.querySelector(".modal") as HTMLElement;
+const numbersBtn = document.querySelectorAll(
+  ".number"
+) as NodeListOf<HTMLButtonElement>;
+const overlay = document.querySelector(".overlay") as HTMLElement;
+const selected = document.querySelector(".selected") as HTMLElement;
+const btnCloseModal = document.querySelector(
+  ".close-modal"
+) as HTMLButtonElement;
 const cardContainer = document.querySelector(".card-container");
-const errorMsg = document.querySelector(".error-msg");
-let buttonText: string = "";
+const errorMsg = document.querySelector(".error-msg") as HTMLElement;
+let buttonText: string | null = "";
 
 // Style the Selected number
-numbersBtn.forEach((number: any) => {
+numbersBtn.forEach((number) => {
   number.addEventListener("click", () => {
-    errorMsg?.classList.add("hidden");
+    numbersBtn.forEach((btn) => {
+      btn.classList.remove("active");
+    });
     number.classList.add("active");
+
+    if (errorMsg) {
+      errorMsg?.classList.add("hidden");
+    }
+
     buttonText = number.textContent;
   });
 });
@@ -25,11 +33,13 @@ numbersBtn.forEach((number: any) => {
 // Function for opening the Modal
 btnSubmit?.addEventListener("click", () => {
   if (buttonText) {
-    selected.textContent = buttonText;
+    if (selected) {
+      selected.textContent = buttonText;
+    }
     modal?.classList.remove("hidden");
     overlay?.classList.remove("hidden");
   } else {
-    errorMsg?.classList.remove("hidden");
+    errorMsg.classList.remove("hidden");
   }
 });
 
